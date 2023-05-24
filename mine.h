@@ -1,3 +1,6 @@
+#ifndef MINE_H
+#define MINE_H
+
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -5,15 +8,15 @@
 size_t reader(void *ptr, size_t size, size_t count, FILE *stream)
 {
 	size_t read;
-	 read = fread(ptr, size, count, stream);
-	 return (read);
+	read = fread(ptr, size, count, stream);
+	return (read);
 }	
 
 
 char *my_strncpy(char *dest, const char *src, size_t n)
 {
-	 char *result = strncpy(dest, src, n);
-	 return (result);
+	 strncpy(dest, src, n);
+	 return (dest);
 
 }
 
@@ -39,3 +42,5 @@ int my_fprintf(FILE *stream, const char *format, ...)
 	return result;
 }
 
+
+#endif

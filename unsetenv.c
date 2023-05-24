@@ -1,5 +1,5 @@
 #include "main.h"
-#include <mine.h>
+#include "mine.h"
 
 /**
  * unsetenv_op - checks for env commands an unset the variables
@@ -7,13 +7,13 @@
  * @ac: keeps cthe count of commands or arguments
  * @argv: holds the the actual commands or arguments
  *
- * Return 0 when succesful
+ * Return: 0 when succesful
  */
 
 int unsetenv_op(int ac, char **argv)
 {
 	int unset_status;
-	char *var = argv[1];
+	char *var;
 
 	 /* check for environmental variables and values */
 	if (ac < 2)
@@ -21,6 +21,7 @@ int unsetenv_op(int ac, char **argv)
 		my_fprintf(stderr, "syntax error");
 		return (-1);
 	}
+	var = argv[1];
 
 
 	unset_status = unsetenv(var);

@@ -13,6 +13,8 @@
 
 int arguments(int ac, char **argv)
 {
+
+
 	/*declear an index to access individual arguments*/
 	int arg_counter = 0;
 
@@ -23,5 +25,6 @@ int arguments(int ac, char **argv)
 		write(STDOUT_FILENO, "\n", 1);
 		arg_counter++;
 	}
+
 	return (0);
 }

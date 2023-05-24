@@ -19,7 +19,8 @@ int env_pro(int ac, char **argv)
 	/* checking if the commands entered are correct*/
 	if (ac < 3)
 	{
-		my_fprintf(stderr,"syntax error");
+
+		my_fprintf(stderr, "syntax error");
 		return (-1);
 	}
 
