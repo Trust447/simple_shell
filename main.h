@@ -13,6 +13,7 @@ int arguments(int ac, char **argv) __attribute__((unused));
 
 int unsetenv_op(int ac, char **argv);
 int env_pro(int ac, char **argv);
+char* readline();
 
 
 #endif

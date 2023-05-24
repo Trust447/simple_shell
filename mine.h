@@ -43,4 +43,14 @@ int my_fprintf(FILE *stream, const char *format, ...)
 }
 
 
+size_t my_fread(void *ptr, size_t size, size_t count, FILE *stream)
+{
+
+	size_t bytes_read = fread(ptr, size, count, stream);
+	return bytes_read;
+
+}
+
+
+
 #endif
