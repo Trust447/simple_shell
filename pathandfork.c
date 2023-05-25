@@ -35,8 +35,7 @@ exit(EXIT_FAILURE);
 }
 else
 {
-perror("Error File Path Not found");
-exit(EXIT_FAILURE);
+perror("command not found");
 }
 }
 else
