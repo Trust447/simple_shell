@@ -1,0 +1,28 @@
+#include <string.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include "functions.h"
+
+size_t reader(void *ptr, size_t size, size_t count, FILE *stream)
+{
+	size_t read;
+	read = fread(ptr, size, count, stream);
+	return (read);
+}
+
+char *my_strncpy(char *dest, const char *src, size_t n)
+{
+	strncpy(dest, src, n);
+	return (dest);
+}
+
+int my_fprintf(FILE *stream, const char *format, ...)
+{
+	va_list args;
+	int result;
+	va_start(args, format);
+	result = vfprintf(stream, format, args);
+	va_end(args);
+	return result;
+}
+

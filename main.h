@@ -26,5 +26,6 @@ int filestat(const char *filepath);
 char *getfileinpath(const char *filename);
 char *cust_evn(const char *cenvname);
 char *cstrconcat(char *filepath, const char *additionpath);
+ssize_t readline(char **buf, size_t *number);
 
 #endif

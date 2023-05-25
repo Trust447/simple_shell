@@ -1,4 +1,5 @@
 #include "main.h"
+#include "functions.h"
 
 /**
  * main - the entry point
@@ -26,7 +27,7 @@ from_pipe = 2;
 
 write(STDOUT_FILENO, prompt, strlen(prompt));  /*writing out to command promt*/
 
-linelen = getlinefunc(&buf, number);
+linelen = readline(&buf, &number);
 str = creatingmemory(linelen);
 cpstrcpy(str, buf); /*using custom string copy*/
 tokenizeInput(buf, &argv, &argc);
