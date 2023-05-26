@@ -1,14 +1,14 @@
 #include "main.h"
-#include "functions.h"
+#include "funcs.h"
 
 /**
- * env_pro - to set enviromental variables
+ * setenv_op - to set enviromental variables
  * @ac: used to check number of commands passed in to the program
  * @argv: holds the actual commands passed into the program
  * Return 0  when succeful
  */
 
-int env_pro(int ac, char **argv)
+int setenv_op(int ac __attribute__((unused)), char **argv __attribute__((unused)))
 {
 	char *var = argv[1];
 	char *val;

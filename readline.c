@@ -1,5 +1,5 @@
 #include "main.h"
-#include "functions.h"
+#include "funcs.h"
 /**
  * readline - is  Custom getline function to read a line from standard input
  * This function stores chunks of characters

@@ -1,5 +1,6 @@
 #include "main.h"
-#include "functions.h"
+#include "funcs.h"
+
 /**
  * unsetenv_op - checks for env commands an unset the variables
  * @ac: keeps cthe count of commands or arguments
@@ -7,7 +8,7 @@
  * Return: 0 when succesful
  */
 
-int unsetenv_op(int ac, char **argv)
+int unsetenv_op(int ac __attribute__((unused)), char **argv __attribute__((unused)))
 {
 	int unset_status;
 	char *var;

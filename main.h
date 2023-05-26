@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <stdarg.h>
 
 int arguments(int argc);
 ssize_t getlinefunc(char **buf, size_t number);
@@ -26,6 +27,8 @@ int filestat(const char *filepath);
 char *getfileinpath(const char *filename);
 char *cust_evn(const char *cenvname);
 char *cstrconcat(char *filepath, const char *additionpath);
-ssize_t readline(char **buf, size_t *number);
+int setenv_op(int ac, char **argv);
+int unsetenv_op(int ac, char **argv);
+
 
 #endif
