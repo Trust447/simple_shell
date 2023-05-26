@@ -27,8 +27,8 @@ int filestat(const char *filepath);
 char *getfileinpath(const char *filename);
 char *cust_evn(const char *cenvname);
 char *cstrconcat(char *filepath, const char *additionpath);
-int setenv_op(int ac, char **argv);
-int unsetenv_op(int ac, char **argv);
+int setenv_op(char *variable, char *value);
+int unsetenv_op(const char *variable);
 
 
 #endif
