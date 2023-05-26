@@ -9,20 +9,17 @@
 
 void executecmd(char **argv)
 {
-char *command = NULL;
-int val;
+	char *command = NULL;
+	int val;
 
-if (argv)
-{
-command = argv[0]; /*getting the buffer value from the terminal*/
-/* running execve  */
+	if (argv == NULL || argv[0] == NULL)
+	{
+		return;
+	}
+	command = argv[0];
 
-val = execve(command, argv, NULL);
+	val = execve(command, argv, NULL);
 
-if (val == -1)
-{
-perror("Error:");
-exit(EXIT_FAILURE); /*Exit the shell on fail*/
-}
-}
+	perror("Error:");
+	exit(EXIT_FAILURE); /*Exit the shell on fail*/
 }
