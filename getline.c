@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "main.h"
+
 /**
  * get_cmd - reds line from the standard input
  *
@@ -12,7 +11,7 @@ char *get_cmd(void)
 	size_t size = 0;
 	ssize_t n;
 	char *str_buf;
-	int buf_len = 0;
+	size_t buf_len;
 
 	n = getline(&buf, &size, stdin);
 	if (n == -1)
@@ -21,11 +20,7 @@ char *get_cmd(void)
 		exit(EXIT_FAILURE);
 	}
 	str_buf = buf;
-	while(*str_buf != '\0')
-	{
-		buf_len++;
-		str_buf++;
-	}
+	buf_len = _strlen(str_buf);
 	write(1, buf, buf_len);
 	return (buf);
 }
