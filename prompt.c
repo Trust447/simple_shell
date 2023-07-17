@@ -8,5 +8,5 @@
 void prompt(void)
 {
 
-	write(1, "$ :", 3);
+	write(1, "$: ", 3);
 }
