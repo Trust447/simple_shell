@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "main.h"
+
 /*
  * cmd_line_args - Handles command line arguements
  *
@@ -10,17 +10,13 @@
 void cmd_line_args(int ac, char **av)
 {
 	int index;
-	int len = 0;
+	size_t size;
 	char *str;
 
 	for (index = 0; index < ac; index++)
 	{
 		str = av[index];
-		while(*str != '\0')
-		{
-			len++;
-			str++;
-		}	
+		size = _strlen(str);	
 		write(1, av[index], len);
 		write(1, "\n", 1);
 	}

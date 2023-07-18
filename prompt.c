@@ -1,12 +1,12 @@
-#include <unistd.h>
+#include "main.h"
+
 /**
  * prompt - prints prompt
  *
  * Return: void
  */
-
 void prompt(void)
 {
 
-	write(1, "$ :", 3);
+	write(1, "$: ", 3);
 }

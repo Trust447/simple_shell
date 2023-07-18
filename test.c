@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdlib.h>
+
 /**
  * main - where the simple shell program begins
  *
@@ -17,31 +17,14 @@ int main(int ac, char **av)
 	int tok_count = 0;
 
 	if (ac > 1)
-	{
-
 		cmd_line_args(ac, av);
-	}
 
 	while (1)
 	{
 		prompt();
 		cmd = get_cmd();
-		cmd_len = cmd
-		cmd_cpy = malloc(sizeof(char) * cmd_len);
-		if (cmd_cpy == NULL)
-		{
-			perror("error");
-			return (-1)
-		}
-		_strcpy(cmd_cpy, cmd);
 
-		for (tok_val = strtok(cmd, d); tok_val != NULL; tok_val = (NULL, d)
-		{
-			tok_count++;
-		
-		}
-		tok_count++
-
+		// _strlen(cmd);
 		free(cmd);
 
 		
