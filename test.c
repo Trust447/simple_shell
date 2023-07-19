@@ -10,11 +10,14 @@
 int main(int ac, char **av)
 {
 	char *cmd;
-	ssize_t cmd_len;
+	char *tok;
+	int i = 0;
+	int c;
+//	size_t len;
+	char *deli = " /n";
 	char *cmd_cpy;
-	char *d = " ";
-	char *tok_val;
-	int tok_count = 0;
+	int exec_val;
+	char **av = NULL;
 
 	if (ac > 1)
 		cmd_line_args(ac, av);
@@ -22,12 +25,48 @@ int main(int ac, char **av)
 	while (1)
 	{
 		prompt();
-		token();
 
-		// _strlen(cmd);
-		free(cmd);
+		cmd = get_cmd();
+		cmd_cpy = malloc(sizeof(char) * (_strlen(cmd) + 1));
+		if (cmd_cpy == NULL)
+		{
+			return (-1);
+		}
 
+		_strcpy(cmd_cpy, cmd);
+
+		tok = strtok(cmd_cpy, deli);
+		for (c = 0; tok != NULL, c++)
+		{
 		
+			tok = strtok(NULL, deli);
+		} 
+		av = malloc(sizeof (char*) * (c + 1));
+
+		tok = strtok(cmd, deli);
+		while(tok != NULL)
+		{
+			av[i] = malloc(sizeof (char) * _strlen(tok));
+			if (av[i] == NULL)
+			{
+				perror("Error");
+				free(cmd);
+			}
+			 _strcpy(av[i], tok);
+			 i++;
+			 tok = strtok(NULL, deli);
+		}
+		_strcpy(av[i], tok);
+
+		exec_val = execve(av[0], av, NULL);
+		if (exec_val == -1)
+		{
+			perror("Error");
+		}
+
+		free(cmd);
+		free(cmd_cpy);
 	}
 	return (0);
 }
+

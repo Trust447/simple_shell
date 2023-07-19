@@ -34,7 +34,3 @@ size_t _strlen(const char *str)
 
 	return (len);
 }
-
-/**
- * Add strtok here
-*/
