@@ -22,7 +22,7 @@ int main(int ac, char **av)
 	while (1)
 	{
 		prompt();
-		cmd = get_cmd();
+		token();
 
 		// _strlen(cmd);
 		free(cmd);
