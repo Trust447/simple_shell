@@ -10,8 +10,9 @@ void prompt (void);
 void _strcpy(char *copy, char *main);
 char *get_cmd (void);
 size_t _strlen(const char *str);
-void cmd_line_args (int ac, char **av);
+// void cmd_line_args (int ac, char **av);
 void _strcpy(char *copy, char *main);
-int count_tok(char* cmd_cpy, char* deli);
+size_t toklen(char *tok, const char *deli);
+void tokcpy(char *tok, char **av, const char *deli);
 
 #endif /*_MAIN_H_*/
