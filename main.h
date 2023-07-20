@@ -12,5 +12,6 @@ char *get_cmd (void);
 size_t _strlen(const char *str);
 void cmd_line_args (int ac, char **av);
 void _strcpy(char *copy, char *main);
+int count_tok(char* cmd_cpy, char* deli);
 
 #endif /*_MAIN_H_*/
