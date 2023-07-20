@@ -21,9 +21,5 @@ char *get_cmd(void)
 	}
 	str_buf = buf;
 	buf_len = _strlen(str_buf);
-<<<<<<< HEAD
-=======
-
->>>>>>> d6d4732ace2516126c0279accc01db4d4b982442
 	return (buf);
 }
