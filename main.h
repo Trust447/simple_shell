@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 // Declare envir variable
 extern char **environ;
@@ -23,4 +25,3 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 char *_getenv(const char *c);
 
 #endif /*_MAIN_H_*/
-
