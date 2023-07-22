@@ -78,3 +78,6 @@ void tokcpy(char *tok, char **av, const char *deli)
 	}
 		av[i] = NULL;
 }
+
+
+
