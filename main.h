@@ -23,5 +23,8 @@ char *_strdup(const char *data);
 void free_av(char **arr);
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_getenv(const char *c);
+char *_strcat(char *dest, const char *src);
+char *get_path(const char *dir, const char *cmd);
+char *cmd_path(const char *cmd);
 
 #endif /*_MAIN_H_*/

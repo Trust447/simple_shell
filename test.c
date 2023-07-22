@@ -10,10 +10,9 @@
 int main(int ac, char **av)
 {
 	(void) ac, av;
-    char *cmd, *tok, *cmd_cpy;
+    char *cmd, *tok, *path, *cmd_cpy, *deli = " \n";;
 	char **arr;
     int status, i = 0;
-    char *deli = " \n";
     size_t len;
     pid_t pid;
 
@@ -43,6 +42,16 @@ int main(int ac, char **av)
         tok = strtok(cmd_cpy, deli);
         tokcpy(tok, arr, deli);
 
+        path = cmd_path(arr[0]);
+        if (path == NULL)
+        {
+            perror("./shell ");
+            free_av(arr);
+            free(cmd);
+            free(cmd_cpy);
+            continue;
+        }
+
         pid = fork();
         if (pid < 0)
         {
@@ -54,12 +63,13 @@ int main(int ac, char **av)
         }
         else if (pid == 0)
         {
-            execve(arr[0], (char* const*)arr, (char* const*)environ);
+            execve(path, (char* const*)arr, (char* const*)environ);
+	    free(path);
             perror("./shell ");
             exit(1);
         }
-	else
-	    wait(&status);
+        else
+            wait(&status);
 
         // Free the memory for av_array
         free_av(arr);
