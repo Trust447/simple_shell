@@ -9,62 +9,47 @@
  */
 int main(int ac, char **av)
 {
-	char *cmd;
-	char *tok;
-	int i = 0;
-//	size_t len;
-	char *deli = " \n";
-	char *cmd_cpy;
-	int exec_val;
-	int f;
+		(void) ac, av;
+    char *cmd, *tok, *cmd_cpy;
+		char **arr;
+    int i = 0;
+    char *deli = " \n";
+    size_t len;
 
+    while (1)
+    {
+        prompt();
 
-	//if (ac > 1)
-	//	cmd_line_args(ac, av);
+        cmd = get_cmd();
+        if (_strcmp(cmd, "\n") == 0)
+        {
+            free(cmd);
+            continue;
+        }
 
-	while (1)
-	{
-		prompt();
+        tok = strtok(cmd, deli);
+        len = toklen(tok, deli);
 
-		cmd = get_cmd();
-		cmd_cpy = malloc(sizeof(char) * (_strlen(cmd) + 1));
-		if (cmd_cpy == NULL)
-			perror("Error");
+        // Allocate memory for av using malloc
+        arr = malloc(sizeof(char *) * (len + 1));
+        if (arr == NULL)
+        {
+            perror("Error");
+            return (1);
+        }
 
-		_strcpy(cmd_cpy, cmd);
+        cmd_cpy = _strdup(cmd);
+        tok = strtok(cmd_cpy, deli);
+        tokcpy(tok, arr, deli);
 
-		tok = strtok(cmd_cpy, deli);
+        execve(arr[0], (const char * const *)arr, NULL);
 
-		size_t len = toklen(tok, deli);
+        perror("./shell ");
 
-		av = malloc(sizeof(char*) * (len + 1));
-		if (av == NULL)
-		{
-			perror("Error");
-			free(cmd_cpy);
-		}
+        // Free the memory for av_array
+        free_av(arr);
 
-		tok = strtok(cmd, deli);
-		tokcpy(tok, av, deli);
-		//for (size_t i = 0; av[i] != NULL; i++) {
-			//printf("%s\n", av[i]);
-		//}
-		av[0] = tok;
+        free(cmd);
+        free(cmd_cpy);
+    }
 
-		exec_val = execve(av[0], av, NULL);
-		if (exec_val == -1)
-		{
-			
-			perror("./shell");
-		}
-		/*for (f = 0; av[i] != NULL; i++)
-		{
-			free(av[i]);
-		*
-		}
-		*/
-		free(cmd);
-		free(cmd_cpy);
-	}
-	return (0);
-}

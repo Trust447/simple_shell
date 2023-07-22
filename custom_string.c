@@ -7,7 +7,7 @@
 * @main : Source
 * Returns void
 */
-void _strcpy(char *copy, char *main)
+void _strcpy(char *copy, const char *main)
 {
 	while (*main != '\0')
 	{
@@ -53,7 +53,7 @@ size_t toklen(char *tok, const char *deli)
 }
 
 /**
- * tokcpy - stores token into array.
+ * tokcpy - stores token into pointer of arrays.
  * @tok: string
  * @av: the memory alloated
  * @deli: delimeter
@@ -69,6 +69,16 @@ void tokcpy(char *tok, char **av, const char *deli)
 		av[i] = malloc(sizeof(char) * (_strlen(tok) + 1));
 		if (av[i] == NULL)
 		{
+<<<<<<< HEAD
+			perror("Error allocating memory");
+		}
+
+		_strcpy(av[i], tok);
+		tok = strtok(NULL, deli);
+		i++;
+	}
+	av[i] = NULL;
+=======
 			perror("Error allocating memorry");
 		}
 
@@ -77,6 +87,7 @@ void tokcpy(char *tok, char **av, const char *deli)
 		tok = strtok(NULL, deli);
 	}
 		av[i] = NULL;
+>>>>>>> 702b778ec3ce45e7dbda8218161f244a7e3a283c
 }
 
 
