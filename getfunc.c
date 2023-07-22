@@ -11,7 +11,6 @@ char *get_cmd(void)
 	char *str_buf;
 	size_t size = 0;
 	ssize_t n;
-	size_t buf_len;
 
 	n = getline(&buf, &size, stdin);
 	if (n == -1)
@@ -20,7 +19,26 @@ char *get_cmd(void)
 		exit(EXIT_FAILURE);
 	}
 	str_buf = buf;
-	buf_len = _strlen(str_buf);
-
 	return (buf);
+}
+
+/**
+ * _getenv - get the environmental variable value for the provided arg.
+ * @c: the environ name (const char *)
+ *
+ * Return: returns the value of the env variable
+*/
+char *_getenv(const char *c)
+{
+	char **envir = environ;
+	size_t i, len_c = _strlen(c);
+
+	i = 0;
+	while (envir[i] != NULL)
+	{
+		if (_strncmp(envir[i], c, len_c) == 0 && envir[i][len_c] == '=')
+			return (envir[i] + len_c + 1);
+		i++;
+	}
+	return (NULL);
 }

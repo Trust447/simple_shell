@@ -19,6 +19,27 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
+ * _strncmp - compare string with the given lenth
+ * @s1: source param const char
+ * @s2: target param const char
+ * @n: len of string to compare (size_t)
+ *
+ * Return: returns 0 if true
+*/
+
+int _strncmp(const char *s1, const char *s2, size_t n)
+{
+  size_t i = 0;
+  while (i < n)
+    {
+      if (s1[i] != s2[i])
+        return (s1[i] - s2[i]);
+      i++;
+    }
+  return (0);
+}
+
+/**
  * _strdup - create a duplicate for the data.
  * @data: the string to duplicate
  *

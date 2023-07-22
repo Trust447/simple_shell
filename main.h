@@ -6,6 +6,9 @@
 #include <unistd.h>
 #include <string.h>
 
+// Declare envir variable
+extern char **environ;
+
 // functions declaration
 void prompt (void);
 char *get_cmd (void);
@@ -16,5 +19,8 @@ size_t toklen(char *tok, const char *deli);
 void tokcpy(char *tok, char **av, const char *deli);
 char *_strdup(const char *data);
 void free_av(char **arr);
+int _strncmp(const char *s1, const char *s2, size_t n);
+char *_getenv(const char *c);
 
 #endif /*_MAIN_H_*/
+

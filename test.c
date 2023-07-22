@@ -42,7 +42,7 @@ int main(int ac, char **av)
         tok = strtok(cmd_cpy, deli);
         tokcpy(tok, arr, deli);
 
-        execve(arr[0], (const char * const *)arr, NULL);
+        execve(arr[0], (char* const*)arr, (char* const*)environ);
 
         perror("./shell ");
 
@@ -52,4 +52,5 @@ int main(int ac, char **av)
         free(cmd);
         free(cmd_cpy);
     }
-
+    return (0);
+}
