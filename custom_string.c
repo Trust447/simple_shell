@@ -69,6 +69,7 @@ void tokcpy(char *tok, char **av, const char *deli)
 		av[i] = malloc(sizeof(char) * (_strlen(tok) + 1));
 		if (av[i] == NULL)
 		{
+<<<<<<< HEAD
 			perror("Error allocating memory");
 		}
 
@@ -77,4 +78,14 @@ void tokcpy(char *tok, char **av, const char *deli)
 		i++;
 	}
 	av[i] = NULL;
+=======
+			perror("Error allocating memorry");
+		}
+
+		_strcpy(av[i], tok);
+		i++;
+		tok = strtok(NULL, deli);
+	}
+		av[i] = NULL;
+>>>>>>> 702b778ec3ce45e7dbda8218161f244a7e3a283c
 }

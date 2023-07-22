@@ -21,5 +21,6 @@ char *get_cmd(void)
 	}
 	str_buf = buf;
 	buf_len = _strlen(str_buf);
+
 	return (buf);
 }

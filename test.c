@@ -52,6 +52,4 @@ int main(int ac, char **av)
         free(cmd);
         free(cmd_cpy);
     }
-    return (0);
-}
 
