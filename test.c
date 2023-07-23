@@ -43,6 +43,16 @@ int main(int ac, char **av)
         tok = strtok(cmd_cpy, deli);
         tokcpy(tok, arr, deli);
 
+	//if (_strcmp(arr[0], "exit") == 0)
+	//{
+	//	free_av(arr);
+	//	free(cmd);
+	//	free(cmd_cpy);
+	//	break;
+	//}
+
+	exit(arr, cmd, cmd_cpy);
+
         pid = fork();
         if (pid < 0)
         {
@@ -54,12 +64,12 @@ int main(int ac, char **av)
         }
         else if (pid == 0)
         {
-            execve(arr[0], (char* const*)arr, (char* const*)environ);
-            perror("./shell ");
-            exit(1);
+         	execve(arr[0], (char* const*)arr, (char* const*)environ);
+         	perror("./shell ");
+         	exit(1);
         }
 	else
-	    wait(&status);
+	    	wait(&status);
 
         // Free the memory for av_array
         free_av(arr);
