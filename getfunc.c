@@ -8,7 +8,6 @@
 char *get_cmd(void)
 {
 	char *buf = NULL;
-	char *str_buf;
 	size_t size = 0;
 	ssize_t n;
 
@@ -18,7 +17,6 @@ char *get_cmd(void)
 		perror("exiting...");
 		exit(EXIT_FAILURE);
 	}
-	str_buf = buf;
 	return (buf);
 }
 
@@ -40,5 +38,6 @@ char *_getenv(const char *c)
 			return (envir[i] + len_c + 1);
 		i++;
 	}
+	free(envir);
 	return (NULL);
 }

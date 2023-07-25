@@ -10,7 +10,7 @@
 int main(int ac, char **av)
 {
 	(void) ac, av;
-	char *cmd, *tok, *path, *cmd_cpy, *deli = " \n";
+	char *cmd, *tok, *path, *fmt, *cmd_cpy, *deli = " \n";
 	char **arr;
 	int status, i = 0;
 	size_t len;
@@ -51,7 +51,9 @@ int main(int ac, char **av)
 		break;
 	}
 
-        path = cmd_path(arr[0]);
+	fmt = han_slash(arr[0]);
+
+        path = cmd_path(fmt);
         if (path == NULL)
         {
             perror(arr[0]);
@@ -98,7 +100,7 @@ int main(int ac, char **av)
         // Free the memory for av_array
         free_av(arr);
         free(cmd);
-	//free(cmd_cpy);
+	free(cmd_cpy);
    
     }
     return (0);

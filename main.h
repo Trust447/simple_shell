@@ -27,7 +27,8 @@ char *_getenv(const char *c);
 char *_strcat(char *dest, const char *src);
 char *get_path(const char *dir, const char *cmd);
 //char *cmd_path(const char *cmd);
-char *cmd_path(char *cmd);
+char *cmd_path(const char *cmd);
 int exit_shell(char **arr);
+char *han_slash(char *first);
 
 #endif /*_MAIN_H_*/
