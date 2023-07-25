@@ -10,11 +10,11 @@
 int main(int ac, char **av)
 {
 	(void) ac, av;
-    char *cmd, *tok, *path, *cmd_cpy, *deli = " \n";;
+	char *cmd, *tok, *path, *cmd_cpy, *deli = " \n";
 	char **arr;
-    int status, i = 0;
-    size_t len;
-    pid_t pid;
+	int status, i = 0;
+	size_t len;
+	pid_t  pid, wait_pid;
 
     while (1)
     {
@@ -34,8 +34,9 @@ int main(int ac, char **av)
         arr = malloc(sizeof(char *) * (len + 1));
         if (arr == NULL)
         {
-            perror("Error");
-            return (1);
+	      	perror("Error");
+		free(cmd);
+		break;
         }
 
         cmd_cpy = _strdup(cmd);
@@ -46,13 +47,14 @@ int main(int ac, char **av)
 	{
 		free(cmd);
 		free(cmd_cpy);
+		free_av(arr);
 		break;
 	}
 
         path = cmd_path(arr[0]);
         if (path == NULL)
         {
-            perror("./shell ");
+            perror(arr[0]);
             free_av(arr);
             free(cmd);
             free(cmd_cpy);
@@ -66,24 +68,38 @@ int main(int ac, char **av)
             free_av(arr);
             free(cmd);
             free(cmd_cpy);
+	    free (path);
             break;
         }
         else if (pid == 0)
         {
 
             execve(path, (char* const*)arr, (char* const*)environ);
+            perror(arr[0]);
 	    free(path);
-            perror("./shell ");
+	    free_av(arr);
+	    free(cmd_cpy);
+	    free(cmd);
             exit(1);
         }
         else
-            wait(&status);
+	{
+           wait_pid = wait(&status);
+	   if (wait_pid == -1)
+	   {
+	   	perror("wait failed");
+		free_av(arr);
+		free(cmd);
+		free(path);
+		break;
+	   }	
 
-
+	}
         // Free the memory for av_array
         free_av(arr);
         free(cmd);
-        free(cmd_cpy);
+	//free(cmd_cpy);
+   
     }
     return (0);
 }

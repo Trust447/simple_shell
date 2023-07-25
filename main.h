@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
 // Declare envir variable
 extern char **environ;
@@ -25,7 +26,8 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 char *_getenv(const char *c);
 char *_strcat(char *dest, const char *src);
 char *get_path(const char *dir, const char *cmd);
-char *cmd_path(const char *cmd);
+//char *cmd_path(const char *cmd);
+char *cmd_path(char *cmd);
 int exit_shell(char **arr);
 
 #endif /*_MAIN_H_*/
