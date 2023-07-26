@@ -9,7 +9,7 @@
 
 int _strcmp(char *s1, char *s2)
 {
-	int a;
+	int a = 0;
 
 	for (a = 0; s1[a] != '\0' || s2[a] != '\0'; a++)
 		if (s1[a] != s2[a])
@@ -48,8 +48,8 @@ int _strncmp(const char *s1, const char *s2, size_t n)
  */
 char *_strdup(const char *data)
 {
-	size_t leng;
-	char *dup;
+	size_t leng = 0;
+	char *dup = NULL;
 
 	leng = _strlen(data);
 	dup = malloc(sizeof(char *) * (leng + 1));

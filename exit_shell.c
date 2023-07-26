@@ -6,11 +6,10 @@
  * Returns void
  */
 
-int exit_shell(char **arr)
+void exit_shell(char **arr)
 {
 	if (_strcmp(arr[0], "exit") == 0)
 	{
-		return (1);
+		exit (0);
 	}
-	return (0);
 }

@@ -9,14 +9,15 @@ char *get_cmd(void)
 {
 	char *buf = NULL;
 	size_t size = 0;
-	ssize_t n;
+	ssize_t n = 0;
 
 	n = getline(&buf, &size, stdin);
 	if (n == -1)
 	{
-		perror("exiting...");
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
+	if (n > 0 && buf[n - 1] == '\n')
+		buf[n - 1] = '\0';
 	return (buf);
 }
 
@@ -29,7 +30,8 @@ char *get_cmd(void)
 char *_getenv(const char *c)
 {
 	char **envir = environ;
-	size_t i, len_c = _strlen(c);
+	size_t i = 0;
+	size_t len_c = _strlen(c);
 
 	i = 0;
 	while (envir[i] != NULL)

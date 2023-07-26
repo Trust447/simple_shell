@@ -11,8 +11,8 @@ char *han_slash(char *first)
     char *token[] = {"", NULL}; /* Array to store the tokens (assuming a maximum of 10 tokens)*/
     int i = 0;
     int count = 0;
-    char *temp; 
-    char *dup;
+    char *temp = NULL; 
+    char *dup = NULL;
 
     /* Using strtok to count the number of tokens*/
     dup = _strdup(first);

@@ -7,5 +7,5 @@
  */
 void prompt(void)
 {
-	write(1, "#cisfun$ ", 10);
+	write(1, "$ ", 2);
 }

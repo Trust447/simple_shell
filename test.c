@@ -9,17 +9,17 @@
  */
 int main(int ac, char **av)
 {
-	char *cmd;
-	char *tok;
-	char *path;
-	char *fmt;
-	char *cmd_cpy;
+	char *cmd = NULL;
+	char *tok = NULL;
+	char *path = NULL;
+	char *fmt = NULL;
+	char *cmd_cpy = NULL;
 	char *deli = " \n";
-	char **arr;
-	int status;
-	size_t len;
-	pid_t  pid;
-	pid_t wait_pid;
+	char **arr = NULL;
+	int status = 0;
+	size_t len = 0;
+	pid_t  pid = 0;
+	pid_t wait_pid = 0;
 	(void) ac;
 	(void) av;
 
@@ -49,16 +49,16 @@ int main(int ac, char **av)
 		cmd_cpy = _strdup(cmd);
 		tok = strtok(cmd_cpy, deli);
 		tokcpy(tok, arr, deli);
+		
 
-		if (exit_shell(arr))
+		fmt = han_slash(arr[0]);
+		if (_strcmp("exit", fmt) == 0)
 		{
 			free(cmd);
 			free(cmd_cpy);
 			free_av(arr);
-			break;
+			exit(0);
 		}
-
-		fmt = han_slash(arr[0]);
 
 		path = cmd_path(fmt);
 		if (path == NULL)
@@ -83,13 +83,13 @@ int main(int ac, char **av)
 		else if (pid == 0)
 		{
 
-			execve(path, (char * const *)arr, (char * const *)environ);
+			execve(path, arr, environ);
 			perror(arr[0]);
 			free(path);
 			free_av(arr);
 			free(cmd_cpy);
 			free(cmd);
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
 		else
 		{

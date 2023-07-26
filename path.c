@@ -8,10 +8,10 @@
  */
 char *cmd_path(const char *cmd)
 {
-	char *path; 
-	char *dir; 
-	char *get_cmd_path;
-	char* path_copy;
+	char *path = NULL;
+	char *dir = NULL;
+	char *get_cmd_path = NULL;
+	char *path_copy = NULL;
 
 	path = _getenv("PATH");
 	if (path == NULL)
@@ -49,9 +49,9 @@ char *cmd_path(const char *cmd)
  */
 char *get_path(const char *dir, const char *cmd)
 {
-	size_t dir_len; 
-	size_t cmd_len;
-	char *new_path;
+	size_t dir_len = 0; 
+	size_t cmd_len = 0;
+	char *new_path = NULL;
 
 	cmd_len = _strlen(cmd);
 	dir_len = _strlen(dir);
