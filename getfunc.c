@@ -25,7 +25,7 @@ char *get_cmd(void)
  * @c: the environ name (const char *)
  *
  * Return: returns the value of the env variable
-*/
+ */
 char *_getenv(const char *c)
 {
 	char **envir = environ;

@@ -9,10 +9,10 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-// Declare envir variable
+/** Declare envir variable*/
 extern char **environ;
 
-// functions declaration
+/* functions declaration*/
 void prompt (void);
 char *get_cmd (void);
 size_t _strlen(const char *str);
@@ -26,7 +26,7 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 char *_getenv(const char *c);
 char *_strcat(char *dest, const char *src);
 char *get_path(const char *dir, const char *cmd);
-//char *cmd_path(const char *cmd);
+/*char *cmd_path(const char *cmd);*/
 char *cmd_path(const char *cmd);
 int exit_shell(char **arr);
 char *han_slash(char *first);

@@ -26,18 +26,18 @@ int _strcmp(char *s1, char *s2)
  * @n: len of string to compare (size_t)
  *
  * Return: returns 0 if true
-*/
+ */
 
 int _strncmp(const char *s1, const char *s2, size_t n)
 {
-  size_t i = 0;
-  while (i < n)
-    {
-      if (s1[i] != s2[i])
-        return (s1[i] - s2[i]);
-      i++;
-    }
-  return (0);
+	size_t i = 0;
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }
 
 /**
@@ -45,19 +45,19 @@ int _strncmp(const char *s1, const char *s2, size_t n)
  * @data: the string to duplicate
  *
  * Return: the new duplicated string
-*/
+ */
 char *_strdup(const char *data) {
-    size_t leng;
-    char *dup;
-    
-    leng = _strlen(data);
+	size_t leng;
+	char *dup;
 
-    dup = malloc(sizeof(char *) * (leng + 1) );
-    if (dup == NULL)
-        return NULL;
+	leng = _strlen(data);
 
-    _strcpy(dup, data);
-    return dup;
+	dup = malloc(sizeof(char *) * (leng + 1) );
+	if (dup == NULL)
+		return NULL;
+
+	_strcpy(dup, data);
+	return dup;
 }
 
 /**
@@ -65,14 +65,14 @@ char *_strdup(const char *data) {
  * @av: the pointer to the arrays.
  * 
  * Return: None
-*/
+ */
 void free_av(char **arr)
 {
-  int i = 0;
-  while (arr[i] != NULL)
-  {
-    free(arr[i]);
-    i++;
-  }
-  free(arr);
+	int i = 0;
+	while (arr[i] != NULL)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

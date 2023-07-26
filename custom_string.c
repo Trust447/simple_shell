@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
-* _strcpy - fuction that copies strings from one variable to another
-*
-* @copy : Destination
-* @main : Source
-* Returns void
-*/
+ * _strcpy - fuction that copies strings from one variable to another
+ *
+ * @copy : Destination
+ * @main : Source
+ * Returns void
+ */
 void _strcpy(char *copy, const char *main)
 {
 	while (*main != '\0')

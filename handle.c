@@ -8,12 +8,13 @@
  */
 char *han_slash(char *first)
 {
-    char *token[] = {"", NULL}; // Array to store the tokens (assuming a maximum of 10 tokens)
+    char *token[] = {"", NULL}; /* Array to store the tokens (assuming a maximum of 10 tokens)*/
     int i = 0;
     int count = 0;
-    char *temp, *dup;
+    char *temp; 
+    char *dup;
 
-    // Using strtok to count the number of tokens
+    /* Using strtok to count the number of tokens*/
     dup = _strdup(first);
     temp = strtok(dup, "/");
     while (temp != NULL) {
@@ -28,7 +29,7 @@ char *han_slash(char *first)
 	return first;
     }
 
-    // Printing the individual parts saved in the array
+    /* Printing the individual parts saved in the array*/
     if (_strcmp(token[0], "bin") == 0 && first[0] == '/')
     {
 	return token[1];
