@@ -9,16 +9,16 @@
  */
 int main(int ac, char **av)
 {
-	char *cmd;	
-	char *tok; 
-	char *path; 
-	char *fmt; 
-	char *cmd_cpy; 
+	char *cmd;
+	char *tok;
+	char *path;
+	char *fmt;
+	char *cmd_cpy;
 	char *deli = " \n";
 	char **arr;
-	int status; 
+	int status;
 	size_t len;
-	pid_t  pid; 
+	pid_t  pid;
 	pid_t wait_pid;
 	(void) ac;
 	(void) av;
@@ -83,7 +83,7 @@ int main(int ac, char **av)
 		else if (pid == 0)
 		{
 
-			execve(path, (char* const*)arr, (char* const*)environ);
+			execve(path, (char * const *)arr, (char * const *)environ);
 			perror(arr[0]);
 			free(path);
 			free_av(arr);
@@ -101,7 +101,7 @@ int main(int ac, char **av)
 				free(cmd);
 				free(path);
 				break;
-			}	
+			}
 
 		}
 		/* Free the memory for av_array*/

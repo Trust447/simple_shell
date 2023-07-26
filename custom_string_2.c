@@ -46,24 +46,24 @@ int _strncmp(const char *s1, const char *s2, size_t n)
  *
  * Return: the new duplicated string
  */
-char *_strdup(const char *data) {
+char *_strdup(const char *data)
+{
 	size_t leng;
 	char *dup;
 
 	leng = _strlen(data);
-
-	dup = malloc(sizeof(char *) * (leng + 1) );
+	dup = malloc(sizeof(char *) * (leng + 1));
 	if (dup == NULL)
-		return NULL;
+		return (NULL);
 
 	_strcpy(dup, data);
-	return dup;
+	return (dup);
 }
 
 /**
  * free_av - this is used to free the memory allocated to av
  * @av: the pointer to the arrays.
- * 
+ *
  * Return: None
  */
 void free_av(char **arr)

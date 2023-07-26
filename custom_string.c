@@ -38,7 +38,7 @@ size_t _strlen(const char *str)
  * toklen - returns the length of tokens generated
  * @tok: string.
  * @deli: the delimeter
- * 
+ *
  * Return: length
  */
 size_t toklen(char *tok, const char *deli)
@@ -49,7 +49,7 @@ size_t toklen(char *tok, const char *deli)
 	{
 		tok = strtok(NULL, deli);
 	}
-	return c;
+	return (c);
 }
 
 /**
@@ -57,14 +57,14 @@ size_t toklen(char *tok, const char *deli)
  * @tok: string
  * @av: the memory alloated
  * @deli: delimeter
- * 
+ *
  * Return: NULL
  */
 void tokcpy(char *tok, char **av, const char *deli)
 {
 	int i = 0;
 
-	while(tok != NULL)
+	while (tok != NULL)
 	{
 		av[i] = malloc(sizeof(char) * (_strlen(tok) + 1));
 		if (av[i] == NULL)
