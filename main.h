@@ -30,5 +30,7 @@ char *get_path(const char *dir, const char *cmd);
 char *cmd_path(const char *cmd);
 int exit_shell(char **arr);
 char *han_slash(char *first);
+void dis_err(char *prog, char *cmd);
 
 #endif /*_MAIN_H_*/
+

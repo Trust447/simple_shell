@@ -63,7 +63,7 @@ int main(int ac, char **av)
 		path = cmd_path(fmt);
 		if (path == NULL)
 		{
-			perror(arr[0]);
+			dis_err(av[0], arr[0]);
 			free_av(arr);
 			free(cmd);
 			free(cmd_cpy);
