@@ -66,7 +66,7 @@ char *_strdup(const char *data)
  *
  * Return: None
  */
-void free_av(char **arr)
+void free_arr(char **arr)
 {
 	int i = 0;
 	while (arr[i] != NULL)

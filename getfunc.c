@@ -9,11 +9,13 @@ char *get_cmd(void)
 {
 	char *buf = NULL;
 	size_t size = 0;
-	ssize_t n = 0;
+	ssize_t n = getline(&buf, &size, stdin);
 
-	n = getline(&buf, &size, stdin);
 	if (n == -1)
 	{
+		free(buf);
+		if (isatty(STDIN_FILENO))
+			write(1, "\n", 2);
 		exit(0);
 	}
 	if (n > 0 && buf[n - 1] == '\n')
@@ -27,19 +29,17 @@ char *get_cmd(void)
  *
  * Return: returns the value of the env variable
  */
-char *_getenv(const char *c)
+char *_getenv(const char *c, char *envp[])
 {
-	char **envir = environ;
 	size_t i = 0;
 	size_t len_c = _strlen(c);
 
 	i = 0;
-	while (envir[i] != NULL)
+	while (envp[i] != NULL)
 	{
-		if (_strncmp(envir[i], c, len_c) == 0 && envir[i][len_c] == '=')
-			return (envir[i] + len_c + 1);
+		if (_strncmp(envp[i], c, len_c) == 0 && envp[i][len_c] == '=')
+			return (envp[i] + len_c + 1);
 		i++;
 	}
-	free(envir);
 	return (NULL);
 }

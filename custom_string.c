@@ -7,7 +7,7 @@
  * @main : Source
  * Returns void
  */
-void _strcpy(char *copy, const char *main)
+char *_strcpy(char *copy, const char *main)
 {
 	while (*main != '\0')
 	{
@@ -16,6 +16,7 @@ void _strcpy(char *copy, const char *main)
 		main++;
 	}
 	*copy = '\0';
+	return (copy);
 }
 
 /**
@@ -35,49 +36,24 @@ size_t _strlen(const char *str)
 }
 
 /**
- * toklen - returns the length of tokens generated
- * @tok: string.
- * @deli: the delimeter
- *
- * Return: length
+ * _strcat - concat string
+ * @dest: param
+ * @src: param
+ * Return: the pointer
  */
-size_t toklen(char *tok, const char *deli)
+char *_strcat(char *dest, const char *src)
 {
-	size_t c;
+	int a, b;
 
-	for (c = 0; tok != NULL; c++)
+	a = 0;
+
+	while (dest[a])
+		a++;
+
+	for (b = 0; src[b]; b++)
 	{
-		tok = strtok(NULL, deli);
+		dest[a] = src[b];
+		a++;
 	}
-	return (c);
+	return (dest);
 }
-
-/**
- * tokcpy - stores token into pointer of arrays.
- * @tok: string
- * @av: the memory alloated
- * @deli: delimeter
- *
- * Return: NULL
- */
-void tokcpy(char *tok, char **av, const char *deli)
-{
-	int i = 0;
-
-	while (tok != NULL)
-	{
-		av[i] = malloc(sizeof(char) * (_strlen(tok) + 1));
-		if (av[i] == NULL)
-		{
-			perror("Error allocating memory");
-		}
-
-		_strcpy(av[i], tok);
-		tok = strtok(NULL, deli);
-		i++;
-	}
-	av[i] = NULL;
-}
-
-
-

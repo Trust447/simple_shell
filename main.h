@@ -6,31 +6,29 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
-#include <sys/wait.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 
-/** Declare envir variable*/
-extern char **environ;
+/* Declare global struct */
+struct stat find;
 
 /* functions declaration*/
 void prompt (void);
+void dis_err(char *prog, char *cmd);
 char *get_cmd (void);
+char **han_token(char *cmd);
+int han_bulltin(char**param, char *hsh, char **envp);
+char *_getenv(const char *c, char **envp);
 size_t _strlen(const char *str);
-void _strcpy(char *copy, const char *main);
-int _strcmp(char *s1, char *s2);
-size_t toklen(char *tok, const char *deli);
-void tokcpy(char *tok, char **av, const char *deli);
-char *_strdup(const char *data);
-void free_av(char **arr);
-int _strncmp(const char *s1, const char *s2, size_t n);
-char *_getenv(const char *c);
+char *cmd_path(char *cmd, char **envp);
+char *_strcpy(char *copy, const char *main);
+char *han_spec(char *first);
+void free_arr(char **arr);
+int run(char **params, char *hsh, char **envp);
 char *_strcat(char *dest, const char *src);
 char *get_path(const char *dir, const char *cmd);
-/*char *cmd_path(const char *cmd);*/
-char *cmd_path(const char *cmd);
-void exit_shell(char **arr);
-char *han_slash(char *first);
-void dis_err(char *prog, char *cmd);
+char *_strdup(const char *data);
+int _strcmp(char *s1, char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 #endif /*_MAIN_H_*/
-

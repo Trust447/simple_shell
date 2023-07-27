@@ -7,108 +7,48 @@
  * @av: Array that holds the values of the command line arguments
  * Return: Always 0
  */
-int main(int ac, char **av)
+int main(int argc __attribute__((unused)), char *argv[], char *envp[])
 {
-	char *cmd = NULL;
-	char *tok = NULL;
-	char *path = NULL;
-	char *fmt = NULL;
-	char *cmd_cpy = NULL;
-	char *deli = " \n";
+	char *cmd_line = NULL, *path = NULL;
 	char **arr = NULL;
-	int status = 0;
-	size_t len = 0;
-	pid_t  pid = 0;
-	pid_t wait_pid = 0;
-	(void) ac;
-	(void) av;
+	int loop = 1;
 
-	while (1)
+	while (loop != 0)
 	{
-		prompt();
+		if (isatty(0))  /* print prompt */
+			prompt();
 
-		cmd = get_cmd();
-		if (_strcmp(cmd, "\n") == 0)
+		cmd_line = get_cmd();
+		if (_strcmp(cmd_line, "\n") == 0)
 		{
-			free(cmd);
+			free(cmd_line);
 			continue;
 		}
 
-		tok = strtok(cmd, deli);
-		len = toklen(tok, deli);
-
-		/* Allocate memory for av using malloc*/
-		arr = malloc(sizeof(char *) * (len + 1));
-		if (arr == NULL)
+		arr = han_token(cmd_line);  /* handle tokenization */
+		loop = han_bulltin(arr, argv[0], envp);
+		if (loop == 5)
 		{
-			perror("Error");
-			free(cmd);
-			break;
-		}
-
-		cmd_cpy = _strdup(cmd);
-		tok = strtok(cmd_cpy, deli);
-		tokcpy(tok, arr, deli);
-		
-
-		fmt = han_slash(arr[0]);
-		if (_strcmp("exit", fmt) == 0)
-		{
-			free(cmd);
-			free(cmd_cpy);
-			free_av(arr);
-			exit(0);
-		}
-
-		path = cmd_path(fmt);
-		if (path == NULL)
-		{
-			dis_err(av[0], arr[0]);
-			free_av(arr);
-			free(cmd);
-			free(cmd_cpy);
-			continue;
-		}
-
-		pid = fork();
-		if (pid < 0)
-		{
-			perror("fork failed");
-			free_av(arr);
-			free(cmd);
-			free(cmd_cpy);
-			free (path);
-			break;
-		}
-		else if (pid == 0)
-		{
-
-			execve(path, arr, environ);
-			perror(arr[0]);
-			free(path);
-			free_av(arr);
-			free(cmd_cpy);
-			free(cmd);
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			wait_pid = wait(&status);
-			if (wait_pid == -1)
+			path = cmd_path(arr[0], envp);
+			if (path != NULL)
 			{
-				perror("wait failed");
-				free_av(arr);
-				free(cmd);
-				free(path);
-				break;
+				arr[0] = path; /* make the first arg the path feteched */
+				loop = run(arr, argv[0], envp);
 			}
-
+			else
+			{
+				dis_err(argv[0], arr[0]);
+				if(!isatty(0))
+				{
+					free(cmd_line);
+					free_arr(arr);
+					_exit(45);
+				}
+			}
 		}
-		/* Free the memory for av_array*/
-		free_av(arr);
-		free(cmd);
-		free(cmd_cpy);
 
+		free(cmd_line);
+		free_arr(arr);
 	}
 	return (0);
 }
