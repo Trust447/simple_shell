@@ -3,7 +3,7 @@
 /**
  * run - excute the command
  *
- * @arr[0] : first command to be compared 
+ * @arr[0] : first command to be compared
  * Returns void
  */
 int run(char **params, char *hsh, char *envp[])

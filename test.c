@@ -38,7 +38,7 @@ int main(int argc __attribute__((unused)), char *argv[], char *envp[])
 			else
 			{
 				dis_err(argv[0], arr[0]);
-				if(!isatty(0))
+				if (!isatty(0))
 				{
 					free(cmd_line);
 					free(arr);
