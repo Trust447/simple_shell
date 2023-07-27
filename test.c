@@ -41,14 +41,14 @@ int main(int argc __attribute__((unused)), char *argv[], char *envp[])
 				if(!isatty(0))
 				{
 					free(cmd_line);
-					free_arr(arr);
+					free(arr);
 					_exit(45);
 				}
 			}
 		}
 
 		free(cmd_line);
-		free_arr(arr);
+		free(arr);
 	}
 	return (0);
 }

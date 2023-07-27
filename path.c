@@ -11,6 +11,7 @@ char *cmd_path(char *cmd, char **envp)
 	char *path = NULL;
 	char *dir = NULL;
 	char *get_cmd_path = NULL;
+	char *copy_path;
 
 	path = _getenv("PATH", envp);
 	if (path == NULL)
@@ -19,7 +20,8 @@ char *cmd_path(char *cmd, char **envp)
 	if (han_spec(cmd))
 		return cmd;
 
-	dir = strtok(path, ":");
+	copy_path = _strdup(path);
+	dir = strtok(copy_path, ":");
 	while (dir != NULL)
 	{
 		get_cmd_path = get_path(dir, cmd);
@@ -29,7 +31,7 @@ char *cmd_path(char *cmd, char **envp)
 		}
 		dir = strtok(NULL, ":");
 	}
-	free(path);
+	free(copy_path);
 	return NULL;
 }
 

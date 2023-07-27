@@ -28,7 +28,6 @@ int run(char **params, char *hsh, char *envp[])
 		if (wait_stat != 0)
 			if (!isatty(0))
 			{
-				free_arr(params);
 				_exit(2);
 			}
 	}

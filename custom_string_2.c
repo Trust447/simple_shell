@@ -60,19 +60,3 @@ char *_strdup(const char *data)
 	return (dup);
 }
 
-/**
- * free_av - this is used to free the memory allocated to av
- * @av: the pointer to the arrays.
- *
- * Return: None
- */
-void free_arr(char **arr)
-{
-	int i = 0;
-	while (arr[i] != NULL)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}

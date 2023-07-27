@@ -23,7 +23,6 @@ size_t _strlen(const char *str);
 char *cmd_path(char *cmd, char **envp);
 char *_strcpy(char *copy, const char *main);
 char *han_spec(char *first);
-void free_arr(char **arr);
 int run(char **params, char *hsh, char **envp);
 char *_strcat(char *dest, const char *src);
 char *get_path(const char *dir, const char *cmd);
