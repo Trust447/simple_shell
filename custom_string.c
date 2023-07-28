@@ -5,7 +5,7 @@
  *
  * @copy : Destination
  * @main : Source
- * Returns void
+ * Return: copy on success
  */
 char *_strcpy(char *copy, const char *main)
 {
@@ -23,7 +23,7 @@ char *_strcpy(char *copy, const char *main)
  * _strlen - Returns the length of a string.
  * @str: string.
  *
- * Return: Length.
+ * Return: Lenght
  */
 size_t _strlen(const char *str)
 {

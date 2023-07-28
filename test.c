@@ -3,8 +3,9 @@
 /**
  * main - where the simple shell program begins
  *
- * @ac: Holds the number of command line arguments
- * @av: Array that holds the values of the command line arguments
+ * @argc: Holds the number of command line arguments
+ * @argv: Array that holds the values of the command line arguments
+ *@envp: array that holds the enviromental variables
  * Return: Always 0
  */
 int main(int argc __attribute__((unused)), char *argv[], char *envp[])

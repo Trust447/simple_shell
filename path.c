@@ -3,6 +3,7 @@
 /**
  * cmd_path - get the command full path.
  * @cmd: the command
+ * @envp: holds enviroment var
  *
  * Return: return the full path
  */

@@ -3,8 +3,11 @@
 /**
  * run - excute the command
  *
- * @arr[0] : first command to be compared
- * Returns void
+ * @params: An array of strings containing the command and its arguments.
+ * @hsh: The name of the shell program used for error messages.
+ * @envp: The environment variables array used by the child process.
+ *
+ * Return: 1 on successful execution, or -1 on failure.
  */
 int run(char **params, char *hsh, char *envp[])
 {

@@ -3,7 +3,7 @@
 /**
  * get_cmd - reds line from the standard input
  *
- * Returns: buf
+ * Return: buf which holds command
  */
 char *get_cmd(void)
 {
@@ -26,6 +26,7 @@ char *get_cmd(void)
 /**
  * _getenv - get the environmental variable value for the provided arg.
  * @c: the environ name (const char *)
+ * @envp : array that will hold the env
  *
  * Return: returns the value of the env variable
  */

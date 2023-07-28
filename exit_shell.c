@@ -2,7 +2,7 @@
 /**
  * exit_shell - fuction that exits shell
  *
- * @arr[0] : first command to be compared
+ * @arr : command arguments to be compared
  * Returns void
  */
 
